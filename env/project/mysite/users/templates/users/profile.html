@@ -1,0 +1,37 @@
+{% extends 'blog/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="card mb-3">
+    <div class="row no-gutters">
+        <div class="col-md-6">
+            <img src="{{ user.profile.image.url }}" class="img-circle" alt="profile_pic"
+                 style="height:450px;width:100%">
+            <div style="padding:20px;">
+            <p class="card-text">
+                <a href="{% url 'post_create' %}"><button class="btn btn-outline-danger btn-block" title="Click to add new post">
+                    New Post</button></a>
+            </p>
+            </div>
+
+        </div>
+        <div class="col-md-6">
+            <div class="card-body">
+
+
+                <form method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <fieldset class="form-group">
+                        <legend class="border-bottom mb-4" style="text-align:center">Register To Join Us</legend>
+                        {{user_form|crispy}}
+                        {{profile_form|crispy}}
+                    </fieldset>
+                    <div class="form-group">
+                        <button class="btn btn-info btn-block" type="submit">Update</button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

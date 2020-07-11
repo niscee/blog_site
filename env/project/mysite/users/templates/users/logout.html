@@ -1,0 +1,15 @@
+{% extends 'blog/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+
+<div class="card" style="margin: 40px 0px 20px 0px">
+    <h5 class="card-header" style="color:red">You Have Been Logged Out!!</h5>
+    <div class="card-body">
+        <h6 class="card-title">Click The Button To Login Again....</h6>
+        <a href="{% url 'login' %}" class="btn btn-primary">Sign In</a>
+    </div>
+</div>
+
+
+{% endblock content %}

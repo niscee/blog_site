@@ -1,0 +1,43 @@
+{% extends 'blog/search_base.html' %}
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+<div class="card">
+    <h5 class="card-header" style="text-align:center">Search</h5>
+    <div class="card-body">
+        <form method="GET">
+            {% csrf_token %}
+            {{ blog_filter.form|crispy }}
+            <button class="btn btn-outline-info btn-block" type="submit">Search</button>
+        </form>
+    </div>
+</div>
+{% endblock content %}
+
+{% block result %}
+<div class="card" style="margin-top:5px;">
+
+    {% if posts %}
+        {% for post in posts %}
+        <div class="card d-flex flex-row" style="padding:5px;">
+            <img src="{{ post.author.profile.image.url }}" class="card-img-top rounded-circle" alt="profile_pic" style="height:50px;width:50px;">
+            <div class="card-body">
+                <h5 class="card-title">{{ post.title }}</h5>
+                <p class="card-text">{{ post.content|slice:":200" }}</p>
+                <a href="{% url 'post_detail' post.id %}" class="btn btn-outline-success">View</a>
+            </div>
+        </div>
+        {% endfor %}
+    {% else %}
+       <div class="card" style="padding:20px;">
+            <p class="alert alert-danger">Search Result Not Found...</p>
+        </div>
+    {% endif %}
+
+</div>
+{% endblock %}
+
+
+
+

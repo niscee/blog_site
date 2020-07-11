@@ -1,0 +1,18 @@
+.nischal-navbar {
+   background-color:#0C4B33;#e3f2fd;
+   color:white;
+}
+
+.navbar-nav{
+  margin:0px 200px 0px 200px;
+}
+
+.nav-link{
+  color:white;
+  padding-left:20px;
+
+}
+
+#nischal-navbar-right{
+  padding-left:5px;
+}

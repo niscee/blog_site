@@ -1,0 +1,29 @@
+{% extends "blog/base.html" %}
+{% block content %}
+
+
+
+        {% for post in posts %}
+        <div class="card" style="margin-top:10px;">
+            <div class="card-header">
+                <span>
+                    <img class="rounded-circle" src="{{ post.author.profile.image.url }}" alt="profile pic" style="height:50px;width:50px;">
+                      {{post.author}}
+                </span>
+            </div>
+            <div class="card-body">
+                <blockquote class="blockquote mb-0">
+                    <a href="{% url 'post_detail' post.id %}">
+                    <h5>{{post.title}}</h5>
+                    </a>
+                    <p>{{post.content|slice:":300"}}</p>
+                    <footer class="blockquote-footer">{{post.date_posted|date:'F d, Y'}}
+                    </footer>
+                </blockquote>
+            </div>
+        </div>
+        {% endfor %}
+
+
+
+{% endblock content %}
